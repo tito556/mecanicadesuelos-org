@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mapa de Suelos Chile · 34 ciudades · Mecanica de Suelos Chile</title><link rel="preload" as="image" href="img/mecanica-suelos-1.webp" fetchpriority="high">
+<meta name="description" content="Mapa interactivo de suelos por ciudad en Chile: tipo de suelo, capacidad portante, zona sísmica NCh433, napa freática y riesgos geotécnicos.">
+<link rel="canonical" href="https://mecanicadesuelos.org/mapa-suelos/">
+<meta property="og:title" content="Mapa de Suelos Chile · 34 ciudades">
+<meta property="og:description" content="Mapa interactivo: suelo, capacidad portante, NCh433, napa, riesgos por ciudad.">
+<meta property="og:url" content="https://mecanicadesuelos.org/mapa-suelos/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mecánica de Suelos Chile">
+<meta name="theme-color" content="#0a2540">
+
+
+<link rel="dns-prefetch" href="https://unpkg.com">
+<link rel="stylesheet" href="/css/leaflet-ef3a.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/leaflet-ef3a.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/leaflet-ef3a.css"></noscript></noscript>
+<script src="/js/leaflet-ef3a.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Mapa de Suelos por Ciudad - Chile", "description": "Dataset curado con tipo de suelo, capacidad portante, zona sismica NCh433.Of2012, profundidad napa freatica y riesgos geotecnicos para 34 ciudades de Chile.", "url": "https://mecanicadesuelos.org/mapa-suelos/", "creator": {"@type": "Organization", "name": "Mecanica de Suelos Chile"}, "license": "https://creativecommons.org/licenses/by/4.0/", "spatialCoverage": {"@type": "Place", "name": "Chile"}, "isAccessibleForFree": true, "keywords": ["suelo Chile", "mecánica de suelos", "NCh433", "zona sísmica", "capacidad portante", "napa freática"], "variableMeasured": ["Tipo de suelo", "Capacidad portante (kg/cm²)", "Zona sísmica NCh433", "Profundidad de napa", "Riesgo geotécnico"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mecanicadesuelos.org/"}, {"@type": "ListItem", "position": 2, "name": "Mapa de Suelos", "item": "https://mecanicadesuelos.org/mapa-suelos/"}]}</script>
+<style>
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;margin:0;color:#1f2937;background:#fff;line-height:1.6}
+header{background:#0A2540;color:#fff;padding:1rem 1.5rem;position:sticky;top:0;z-index:1010;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+header a{color:#fff;text-decoration:none;font-weight:600}
+.nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.brand{font-size:1.1rem}
+.crumb{background:#f3f4f6;padding:.6rem 1.5rem;font-size:.85rem}
+.crumb-inner{max-width:1200px;margin:0 auto}
+.crumb a{color:#0A2540;text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:2rem;margin:0 0 .5rem;color:#0A2540;line-height:1.2}
+.lead{color:#4b5563;font-size:1.05rem;margin:0 0 1.5rem}
+#mapa-suelos{height:560px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.08);margin:1rem 0}
+.legend-box{background:#f8fafc;padding:1rem 1.25rem;border-radius:8px;border-left:4px solid #0A2540;margin:1rem 0}
+.legend-box strong{display:block;margin-bottom:.5rem;color:#0A2540}
+table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.9rem}
+th,td{padding:.7rem .9rem;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:top}
+th{background:#0A2540;color:#fff;font-weight:600}
+tr:hover{background:#f9fafb}
+.cta-box{background:linear-gradient(135deg,#0A2540 0%,#1e3a8a 100%);color:#fff;padding:2rem 1.5rem;border-radius:8px;text-align:center;margin:2rem 0}
+.cta-box h2{margin:0 0 .5rem;font-size:1.4rem}
+.cta-box a{color:#fff;background:rgba(255,255,255,.15);border:1px solid #fff;padding:.7rem 1.5rem;border-radius:6px;text-decoration:none;display:inline-block;margin-top:.5rem;font-weight:600}
+.cta-box a:hover{background:rgba(255,255,255,.25)}
+footer{background:#0A2540;color:#cbd5e1;padding:1.5rem;text-align:center;font-size:.85rem;margin-top:3rem}
+footer a{color:#cbd5e1}
+@media (max-width:768px){
+  #mapa-suelos{height:380px}
+  h1{font-size:1.5rem}
+  th,td{padding:.5rem;font-size:.8rem}
+}
+</style>
+
+
+
+
+
+<style id="hero-img-cap-v3">
+section.block{overflow:auto}
+section.block .hero-img-wrap{float:right!important;max-width:340px!important;width:340px!important;max-height:280px!important;margin:6px 0 16px 24px!important;overflow:hidden;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.10);display:block!important}
+section.block .hero-img-wrap img{max-width:100%!important;max-height:280px!important;width:100%!important;height:280px!important;object-fit:cover!important;display:block!important;border-radius:10px}
+.inline-img{float:right!important;max-width:300px!important;width:300px!important;max-height:220px!important;margin:6px 0 18px 20px!important;overflow:hidden;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.10)}
+.inline-img img{max-width:100%!important;max-height:220px!important;width:100%!important;height:220px!important;object-fit:cover!important;display:block!important;border-radius:10px}
+section.block h2{clear:both;margin-top:0}
+@media (max-width:768px){
+  section.block{overflow:visible}
+  section.block .hero-img-wrap{float:none!important;width:100%!important;max-width:100%!important;max-height:240px!important;margin:18px auto!important}
+  section.block .hero-img-wrap img{height:240px!important;max-height:240px!important}
+  .inline-img{float:none!important;width:100%!important;max-width:100%!important;max-height:220px!important;margin:18px auto!important}
+}
+main img:not([class]){max-width:100%;height:auto}
+</style>
+<meta name="layout" content="L1">
+
+
+<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style><!--selfhost-fonts--><style></style></head>
+<body>
+<header>
+  <div class="nav">
+    <a href="/" class="brand">Mecanica de Suelos Chile</a>
+    <nav><a href="/" style="margin-left:1rem">Inicio</a></nav>
+  </div>
+</header>
+<div class="crumb"><div class="crumb-inner"><a href="/">Inicio</a> &raquo; Mapa de Suelos</div></div>
+
+<main>
+
+<h1>Mapa de Suelos por Ciudad — Chile</h1>
+<p class="lead">Tipo de suelo predominante, capacidad portante, zonificacion sismica NCh433.Of2012, profundidad de napa freatica y riesgos geotecnicos para 34 ciudades chilenas. Datos curados de SERNAGEOMIN (cartas geologicas 1:100.000), CIREN (clasificacion de suelos), microzonificacion U.Chile y normativa NCh433.</p>
+
+<div id="mapa-suelos" aria-label="Mapa interactivo de tipos de suelo por ciudad en Chile"></div>
+
+<div class="legend-box">
+<strong>Leyenda — Tipos de suelo:</strong>
+<span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#FCD34D;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Arenas costeras / eólicas</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#D97706;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Aluviones / gravas modernas</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#92400E;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Gravas fluviales sobre roca</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#A16207;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Arenas + gravas centro</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#7C2D12;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Arcillas + arenas con napa alta</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#52525B;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Cenizas volcánicas (trumao)</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#DC2626;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Cercanía volcán activo</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#6B7280;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Morrenas glaciares / till</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#9CA3AF;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Roca / pendientes</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#FBBF24;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Limos saturados / licuables</span><span style="display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:.85rem"><span style="width:14px;height:14px;background:#A78BFA;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)"></span>Suelos con sulfatos salinos</span>
+</div>
+
+<div class="cta-box">
+<h2>Necesita un estudio de suelos para su proyecto?</h2>
+<p>Cotice con profesionales en su ciudad. Estudios geotecnicos NCh1508 + sondajes SPT + ensayos de laboratorio.</p>
+<a href="/">Ver ciudades con cobertura</a>
+</div>
+
+<h2 style="margin-top:2rem;color:#0A2540">Tabla de datos por ciudad</h2>
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>Ciudad</th><th>Tipo de suelo</th><th>Capacidad portante</th><th>Zona sismica</th><th>Napa freatica</th><th>Riesgos</th></tr></thead>
+<tbody>
+<tr><td><strong>Arica</strong></td><td>Arenas eólicas + costras salinas</td><td>2.5-4.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>Variable según sector</td><td>Corrosión salina · subducción</td></tr><tr><td><strong>Iquique</strong></td><td>Arenas eólicas + costras salinas pampa Tamarugal</td><td>2.5-4.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>Profunda (>20 m)</td><td>Subducción · tsunami costa</td></tr><tr><td><strong>Alto Hospicio</strong></td><td>Roca andesítica + arenas</td><td>4.0-6.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>Muy profunda</td><td>Subducción · pendientes</td></tr><tr><td><strong>Calama</strong></td><td>Gravas + sulfatos solubles, depósitos salinos</td><td>3.0-5.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>-3 a -8 m</td><td>Sulfatos agresivos al hormigón</td></tr><tr><td><strong>Antofagasta</strong></td><td>Gravas + arenas con costras salinas en pendiente</td><td>2.5-4.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>Variable</td><td>Aluviones quebradas · subducción</td></tr><tr><td><strong>Copiapó</strong></td><td>Aluviones modernos + gravas Río Copiapó</td><td>2.0-3.5 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>-2 a -6 m</td><td>Aluviones (2015) · napa alta</td></tr><tr><td><strong>Vallenar</strong></td><td>Aluviones + gravas Río Huasco</td><td>2.5-4.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>-4 a -8 m</td><td>Aluviones · sísmico costa</td></tr><tr><td><strong>La Serena</strong></td><td>Arenas costeras + sedimentos terraza marina</td><td>2.0-3.5 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>-5 a -10 m</td><td>Subducción · tsunami</td></tr><tr><td><strong>Coquimbo</strong></td><td>Arenas costeras saturadas</td><td>1.5-3.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>-1 a -4 m</td><td>Licuación · tsunami</td></tr><tr><td><strong>Los Andes</strong></td><td>Gravas fluviales cordilleranas</td><td>4.0-6.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-5 a -15 m</td><td>Aluviones cordillera</td></tr><tr><td><strong>Valparaíso</strong></td><td>Rocas + arenas + rellenos costeros</td><td>2.0-5.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>Variable cerro/plan</td><td>Subducción 1906/1985 · taludes urbanos</td></tr><tr><td><strong>Viña del Mar</strong></td><td>Arenas costeras + roca pre-cordillera</td><td>2.0-4.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>-3 a -8 m</td><td>Licuación · subducción</td></tr><tr><td><strong>Villa Alemana</strong></td><td>Arcillas expansivas + gravas</td><td>2.5-4.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>-3 a -10 m</td><td>Expansividad arcillas</td></tr><tr><td><strong>Santiago</strong></td><td>Gravas fluviales >80m sobre roca andesítica</td><td>3.5-5.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-8 a -15 m</td><td>Falla San Ramón · licuación localizada</td></tr><tr><td><strong>Peñaflor</strong></td><td>Arcillas + arenas con napa alta</td><td>1.5-3.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-2 a -5 m</td><td>Licuación · napa alta</td></tr><tr><td><strong>Rancagua</strong></td><td>Gravas fluviales depresión central</td><td>3.0-4.5 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-5 a -10 m</td><td>Subducción zona central</td></tr><tr><td><strong>Machalí</strong></td><td>Gravas fluviales + roca pre-cordillerana</td><td>3.5-5.5 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-6 a -12 m</td><td>Cercanía falla · pendientes</td></tr><tr><td><strong>Curicó</strong></td><td>Gravas + arenas con depósitos volcánicos</td><td>2.5-4.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-4 a -10 m</td><td>Cenizas volcánicas variables</td></tr><tr><td><strong>Talca</strong></td><td>Arenas + gravas fluviales llanura central</td><td>2.5-4.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-3 a -8 m</td><td>Sismo 27F 2010 · licuación</td></tr><tr><td><strong>Linares</strong></td><td>Arcillas + arenas con napa alta</td><td>1.5-3.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-2 a -6 m</td><td>Napa alta · licuación parcial</td></tr><tr><td><strong>Chillán</strong></td><td>Cenizas volcánicas + arenas (trumao)</td><td>1.5-3.5 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-3 a -8 m</td><td>Trumao colapsable · Nevados Chillán</td></tr><tr><td><strong>Concepción</strong></td><td>Arenas + limos blandos saturados Biobío</td><td>1.5-3.0 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>-1 a -4 m</td><td>Licuación 27F 2010 · tsunami</td></tr><tr><td><strong>Los Ángeles</strong></td><td>Cenizas volcánicas + gravas Laja</td><td>2.0-3.5 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-3 a -8 m</td><td>Trumao · cercanía Antuco</td></tr><tr><td><strong>Temuco</strong></td><td>Cenizas volcánicas trumao + arcillas</td><td>1.5-3.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-2 a -6 m</td><td>Colapsabilidad trumao · sísmico</td></tr><tr><td><strong>Padre Las Casas</strong></td><td>Cenizas + arcillas con humedad alta</td><td>1.5-3.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-2 a -5 m</td><td>Trumao · suelos blandos</td></tr><tr><td><strong>Pucón</strong></td><td>Cenizas volcánicas + lavas Villarrica</td><td>2.0-4.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>Variable lacustre</td><td>Villarrica activo · lahares</td></tr><tr><td><strong>Villarrica</strong></td><td>Cenizas volcánicas + depósitos lacustres</td><td>1.5-3.5 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-2 a -6 m</td><td>Villarrica activo · suelo blando</td></tr><tr><td><strong>Valdivia</strong></td><td>Arenas + limos saturados (zona 1960 M9.5)</td><td>1.0-2.5 kg/cm²</td><td>Zona 3 (Ao=0.4g)</td><td>-1 a -3 m</td><td>Licuación histórica · subsidencia</td></tr><tr><td><strong>Osorno</strong></td><td>Cenizas volcánicas trumao + morrenas</td><td>1.5-3.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-3 a -8 m</td><td>Trumao · cercanía Osorno volcán</td></tr><tr><td><strong>Llanquihue</strong></td><td>Cenizas + morrenas glaciares</td><td>2.0-3.5 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-2 a -6 m</td><td>Suelos variables glaciares</td></tr><tr><td><strong>Puerto Varas</strong></td><td>Morrenas glaciares + cenizas</td><td>2.5-4.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-3 a -8 m</td><td>Pendientes glaciares · lahar</td></tr><tr><td><strong>Puerto Montt</strong></td><td>Morrenas + limos saturados costa</td><td>1.5-3.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-1 a -4 m</td><td>Licuación · suelos blandos saturados</td></tr><tr><td><strong>Ancud</strong></td><td>Roca + arcillas alta humedad</td><td>2.0-4.0 kg/cm²</td><td>Zona 2 (Ao=0.3g)</td><td>-2 a -5 m</td><td>Alta pluviosidad · expansividad</td></tr><tr><td><strong>Coyhaique</strong></td><td>Till glaciar + roca alta variabilidad</td><td>2.5-5.0 kg/cm²</td><td>Zona 1 (Ao=0.2g)</td><td>-3 a -10 m</td><td>Deslizamientos · suelos volcánicos</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 style="margin-top:2.5rem;color:#0A2540">Fuentes y metodologia</h2>
+<ul>
+<li><strong>SERNAGEOMIN</strong> — Cartas geologicas 1:100.000 + Servicio Nacional de Geologia y Mineria de Chile.</li>
+<li><strong>CIREN</strong> — Centro de Informacion de Recursos Naturales, clasificacion de suelos a nivel comuna.</li>
+<li><strong>Microzonificacion U.Chile</strong> — estudios microzonificacion sismica Santiago, Concepcion, Iquique.</li>
+<li><strong>NCh433.Of2012</strong> — Norma chilena de diseno sismico de edificios (zonas 1/2/3).</li>
+<li><strong>Papers academicos chilenos</strong> — comportamiento de suelos en sismos 27F (2010), Iquique (2014), Illapel (2015).</li>
+</ul>
+
+<p style="font-size:.85rem;color:#6b7280;margin-top:2rem">Los datos son referenciales y NO sustituyen un estudio de mecanica de suelos especifico para su predio. Para diseno estructural utilice siempre un estudio geotecnico profesional segun NCh1508.</p>
+
+<p style="font-size:.85rem;color:#6b7280;margin-top:1rem"><em>Ultima actualizacion: 2026-05-26</em></p>
+</main>
+
+<footer>
+<p>&copy; 2026 Mecanica de Suelos Chile &middot; Santiago, Chile</p>
+<p style="margin-top:.5rem"><a href="/" rel="noopener">Inicio</a></p>
+</footer>
+
+<script>document.addEventListener('DOMContentLoaded',function(){/*lf-defer-fix*/window.__SOIL_ROWS__ = [{"slug": "arica", "label": "Arica", "lat": -18.4783, "lon": -70.3126, "tipo": "Arenas eólicas + costras salinas", "cap": "2.5-4.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "Variable según sector", "riesgo": "Corrosión salina · subducción", "color": "#FCD34D"}, {"slug": "iquique", "label": "Iquique", "lat": -20.2208, "lon": -70.1431, "tipo": "Arenas eólicas + costras salinas pampa Tamarugal", "cap": "2.5-4.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "Profunda (>20 m)", "riesgo": "Subducción · tsunami costa", "color": "#FCD34D"}, {"slug": "alto-hospicio", "label": "Alto Hospicio", "lat": -20.27, "lon": -70.11, "tipo": "Roca andesítica + arenas", "cap": "4.0-6.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "Muy profunda", "riesgo": "Subducción · pendientes", "color": "#9CA3AF"}, {"slug": "calama", "label": "Calama", "lat": -22.45, "lon": -68.9333, "tipo": "Gravas + sulfatos solubles, depósitos salinos", "cap": "3.0-5.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "-3 a -8 m", "riesgo": "Sulfatos agresivos al hormigón", "color": "#A78BFA"}, {"slug": "antofagasta", "label": "Antofagasta", "lat": -23.65, "lon": -70.4, "tipo": "Gravas + arenas con costras salinas en pendiente", "cap": "2.5-4.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "Variable", "riesgo": "Aluviones quebradas · subducción", "color": "#D97706"}, {"slug": "copiapo", "label": "Copiapó", "lat": -27.3667, "lon": -70.3333, "tipo": "Aluviones modernos + gravas Río Copiapó", "cap": "2.0-3.5 kg/cm²", "zona": 3, "ao": 0.4, "napa": "-2 a -6 m", "riesgo": "Aluviones (2015) · napa alta", "color": "#D97706"}, {"slug": "vallenar", "label": "Vallenar", "lat": -28.5667, "lon": -70.75, "tipo": "Aluviones + gravas Río Huasco", "cap": "2.5-4.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "-4 a -8 m", "riesgo": "Aluviones · sísmico costa", "color": "#D97706"}, {"slug": "la-serena", "label": "La Serena", "lat": -29.9, "lon": -71.25, "tipo": "Arenas costeras + sedimentos terraza marina", "cap": "2.0-3.5 kg/cm²", "zona": 3, "ao": 0.4, "napa": "-5 a -10 m", "riesgo": "Subducción · tsunami", "color": "#FCD34D"}, {"slug": "coquimbo", "label": "Coquimbo", "lat": -29.9667, "lon": -71.3333, "tipo": "Arenas costeras saturadas", "cap": "1.5-3.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "-1 a -4 m", "riesgo": "Licuación · tsunami", "color": "#FBBF24"}, {"slug": "los-andes", "label": "Los Andes", "lat": -32.8333, "lon": -70.6, "tipo": "Gravas fluviales cordilleranas", "cap": "4.0-6.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-5 a -15 m", "riesgo": "Aluviones cordillera", "color": "#92400E"}, {"slug": "valparaiso", "label": "Valparaíso", "lat": -33.05, "lon": -71.6167, "tipo": "Rocas + arenas + rellenos costeros", "cap": "2.0-5.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "Variable cerro/plan", "riesgo": "Subducción 1906/1985 · taludes urbanos", "color": "#9CA3AF"}, {"slug": "vina-del-mar", "label": "Viña del Mar", "lat": -33.0167, "lon": -71.55, "tipo": "Arenas costeras + roca pre-cordillera", "cap": "2.0-4.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "-3 a -8 m", "riesgo": "Licuación · subducción", "color": "#FCD34D"}, {"slug": "villa-alemana", "label": "Villa Alemana", "lat": -33.05, "lon": -71.3833, "tipo": "Arcillas expansivas + gravas", "cap": "2.5-4.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "-3 a -10 m", "riesgo": "Expansividad arcillas", "color": "#7C2D12"}, {"slug": "santiago", "label": "Santiago", "lat": -33.45, "lon": -70.6667, "tipo": "Gravas fluviales >80m sobre roca andesítica", "cap": "3.5-5.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-8 a -15 m", "riesgo": "Falla San Ramón · licuación localizada", "color": "#92400E"}, {"slug": "penaflor", "label": "Peñaflor", "lat": -33.6167, "lon": -70.8833, "tipo": "Arcillas + arenas con napa alta", "cap": "1.5-3.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-2 a -5 m", "riesgo": "Licuación · napa alta", "color": "#7C2D12"}, {"slug": "rancagua", "label": "Rancagua", "lat": -34.1667, "lon": -70.75, "tipo": "Gravas fluviales depresión central", "cap": "3.0-4.5 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-5 a -10 m", "riesgo": "Subducción zona central", "color": "#92400E"}, {"slug": "machali", "label": "Machalí", "lat": -34.1833, "lon": -70.65, "tipo": "Gravas fluviales + roca pre-cordillerana", "cap": "3.5-5.5 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-6 a -12 m", "riesgo": "Cercanía falla · pendientes", "color": "#92400E"}, {"slug": "curico", "label": "Curicó", "lat": -34.9833, "lon": -71.2333, "tipo": "Gravas + arenas con depósitos volcánicos", "cap": "2.5-4.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-4 a -10 m", "riesgo": "Cenizas volcánicas variables", "color": "#A16207"}, {"slug": "talca", "label": "Talca", "lat": -35.4333, "lon": -71.6667, "tipo": "Arenas + gravas fluviales llanura central", "cap": "2.5-4.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-3 a -8 m", "riesgo": "Sismo 27F 2010 · licuación", "color": "#A16207"}, {"slug": "linares", "label": "Linares", "lat": -35.85, "lon": -71.6, "tipo": "Arcillas + arenas con napa alta", "cap": "1.5-3.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-2 a -6 m", "riesgo": "Napa alta · licuación parcial", "color": "#7C2D12"}, {"slug": "chillan", "label": "Chillán", "lat": -36.6, "lon": -72.1, "tipo": "Cenizas volcánicas + arenas (trumao)", "cap": "1.5-3.5 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-3 a -8 m", "riesgo": "Trumao colapsable · Nevados Chillán", "color": "#52525B"}, {"slug": "concepcion", "label": "Concepción", "lat": -36.8167, "lon": -73.05, "tipo": "Arenas + limos blandos saturados Biobío", "cap": "1.5-3.0 kg/cm²", "zona": 3, "ao": 0.4, "napa": "-1 a -4 m", "riesgo": "Licuación 27F 2010 · tsunami", "color": "#FBBF24"}, {"slug": "los-angeles-bb", "label": "Los Ángeles", "lat": -37.4667, "lon": -72.35, "tipo": "Cenizas volcánicas + gravas Laja", "cap": "2.0-3.5 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-3 a -8 m", "riesgo": "Trumao · cercanía Antuco", "color": "#52525B"}, {"slug": "temuco", "label": "Temuco", "lat": -38.7333, "lon": -72.6, "tipo": "Cenizas volcánicas trumao + arcillas", "cap": "1.5-3.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-2 a -6 m", "riesgo": "Colapsabilidad trumao · sísmico", "color": "#52525B"}, {"slug": "padre-las-casas", "label": "Padre Las Casas", "lat": -38.7667, "lon": -72.6, "tipo": "Cenizas + arcillas con humedad alta", "cap": "1.5-3.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-2 a -5 m", "riesgo": "Trumao · suelos blandos", "color": "#52525B"}, {"slug": "pucon", "label": "Pucón", "lat": -39.2667, "lon": -71.9667, "tipo": "Cenizas volcánicas + lavas Villarrica", "cap": "2.0-4.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "Variable lacustre", "riesgo": "Villarrica activo · lahares", "color": "#DC2626"}, {"slug": "villarrica", "label": "Villarrica", "lat": -39.2833, "lon": -72.2333, "tipo": "Cenizas volcánicas + depósitos lacustres", "cap": "1.5-3.5 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-2 a -6 m", "riesgo": "Villarrica activo · suelo blando", "color": "#DC2626"}, {"slug": "valdivia", "label": "Valdivia", "lat": -39.8167, "lon": -73.2333, "tipo": "Arenas + limos saturados (zona 1960 M9.5)", "cap": "1.0-2.5 kg/cm²", "zona": 3, "ao": 0.4, "napa": "-1 a -3 m", "riesgo": "Licuación histórica · subsidencia", "color": "#FBBF24"}, {"slug": "osorno", "label": "Osorno", "lat": -40.5667, "lon": -73.1333, "tipo": "Cenizas volcánicas trumao + morrenas", "cap": "1.5-3.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-3 a -8 m", "riesgo": "Trumao · cercanía Osorno volcán", "color": "#52525B"}, {"slug": "llanquihue", "label": "Llanquihue", "lat": -41.25, "lon": -72.7833, "tipo": "Cenizas + morrenas glaciares", "cap": "2.0-3.5 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-2 a -6 m", "riesgo": "Suelos variables glaciares", "color": "#6B7280"}, {"slug": "puerto-varas", "label": "Puerto Varas", "lat": -41.3167, "lon": -72.9833, "tipo": "Morrenas glaciares + cenizas", "cap": "2.5-4.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-3 a -8 m", "riesgo": "Pendientes glaciares · lahar", "color": "#6B7280"}, {"slug": "puerto-montt", "label": "Puerto Montt", "lat": -41.4667, "lon": -72.9333, "tipo": "Morrenas + limos saturados costa", "cap": "1.5-3.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-1 a -4 m", "riesgo": "Licuación · suelos blandos saturados", "color": "#6B7280"}, {"slug": "ancud", "label": "Ancud", "lat": -41.8667, "lon": -73.8333, "tipo": "Roca + arcillas alta humedad", "cap": "2.0-4.0 kg/cm²", "zona": 2, "ao": 0.3, "napa": "-2 a -5 m", "riesgo": "Alta pluviosidad · expansividad", "color": "#7C2D12"}, {"slug": "coyhaique", "label": "Coyhaique", "lat": -45.5667, "lon": -72.0667, "tipo": "Till glaciar + roca alta variabilidad", "cap": "2.5-5.0 kg/cm²", "zona": 1, "ao": 0.2, "napa": "-3 a -10 m", "riesgo": "Deslizamientos · suelos volcánicos", "color": "#6B7280"}];
+document.addEventListener('DOMContentLoaded', function() {
+  function init() {
+    if (!window.L) { setTimeout(init, 100); return; }
+    var el = document.getElementById('mapa-suelos');
+    if (!el) return;
+    var map = L.map('mapa-suelos').setView([-35.5, -71.5], 4);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap',
+      maxZoom: 10
+    }).addTo(map);
+    window.__SOIL_ROWS__.forEach(function(r) {
+      L.circleMarker([r.lat, r.lon], {
+        radius: 9, fillColor: r.color, color: '#fff', weight: 2, fillOpacity: 0.9
+      }).addTo(map)
+        .bindPopup(
+          '<div style="min-width:240px"><strong style="font-size:1rem">' + r.label + '</strong>' +
+          '<div style="margin-top:6px;font-size:.85rem"><strong>Suelo:</strong> ' + r.tipo + '</div>' +
+          '<div style="font-size:.85rem"><strong>Cap. portante:</strong> ' + r.cap + '</div>' +
+          '<div style="font-size:.85rem"><strong>Zona NCh433:</strong> Zona ' + r.zona + ' (Ao=' + r.ao + 'g)</div>' +
+          '<div style="font-size:.85rem"><strong>Napa:</strong> ' + r.napa + '</div>' +
+          '<div style="font-size:.85rem;color:#7c1d6f"><strong>Riesgo:</strong> ' + r.riesgo + '</div></div>'
+        );
+    });
+  }
+  init();
+});
+});</script>
+</body>
+</html>
