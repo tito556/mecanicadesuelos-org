@@ -1,432 +1,751 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mecanica de Suelos en Chillan · Estudios Geotécnicos Chile</title>
-<meta name="description" content="Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable.">
-<meta name="theme-color" content="#0a2540">
-<link rel="canonical" href="https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mecanica de Suelos en Chillan · Estudios Geotécnicos Chile">
-<meta property="og:description" content="Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable.">
-<meta property="og:url" content="https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/">
-<meta property="og:site_name" content="Mecánica de Suelos Chile">
-<meta property="og:image" content="https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/img/team_cl_ingeo_lab_equipos.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mecanica de Suelos en Chillan · Estudios Geotécnicos Chile">
-<meta name="twitter:description" content="Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable. Nuestra firma ofrece servicios técnicos en la región.">
-<meta name="twitter:image" content="https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/img/team_cl_ingeo_lab_equipos.png">
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230A2540'/%3E%3Cpath d='M14 44 L24 30 L34 38 L44 22 L50 28' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
-
-<link rel="stylesheet" href="/css/leaflet-ef3a.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/leaflet-ef3a.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/leaflet-ef3a.css"></noscript></noscript>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Mecanica de Suelos Chillan", "description": "Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable. Nuestra firma ofrece servicios técnicos en la región.", "url": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/", "areaServed": {"@type": "City", "name": "Chillan"}, "address": {"@type": "PostalAddress", "addressLocality": "Chillan", "addressCountry": "Chile"}, "email": "contacto@mecanicadesuelos.org", "priceRange": "$$", "geo": {"@type": "GeoCoordinates", "latitude": -36.6066, "longitude": -72.1034}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mecanica de Suelos en Chillan", "url": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/", "description": "Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable. Nuestra firma ofrece servicios técnicos en la región.", "inLanguage": "es", "datePublished": "2026-05-27", "dateModified": "2026-05-27", "isPartOf": {"@type": "WebSite", "url": "https://mecanicadesuelos.org/", "name": "Mecanica de Suelos"}, "breadcrumb": {"@id": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/#breadcrumb"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mecanicadesuelos.org/"}, {"@type": "ListItem", "position": 2, "name": "Chillan", "item": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/"}], "@id": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/#breadcrumb"}</script>
-
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué tipo de suelo predomina en Chillan?", "acceptedAnswer": {"@type": "Answer", "text": "El subsuelo de Chillan está compuesto principalmente por gravas arenosas con bolones, producto de depósitos aluviales del río Ñuble. En algunos sectores se encuentran lentes de arcilla limosa, especialmente hacia el poniente, lo que condiciona el diseño de fundaciones."}}, {"@type": "Question", "name": "¿Cuál es la normativa sísmica aplicable en Chillan?", "acceptedAnswer": {"@type": "Answer", "text": "En Chillan rige la norma NCh433.Of2012, que clasifica la ciudad en Zona Sísmica 3 con una aceleración efectiva máxima de 0,40 g. Esta zonificación exige estudios geotécnicos detallados para evaluar el riesgo de licuación y diseñar fundaciones sismorresistentes."}}, {"@type": "Question", "name": "¿Es obligatorio un estudio de mecánica de suelos para construir en Chillan?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, la Ordenanza General de Urbanismo y Construcciones (OGUC) exige un estudio de mecánica de suelos para toda edificación de más de tres pisos o con cargas elevadas. Incluso en viviendas unifamiliares, se recomienda para evitar problemas de asentamiento."}}]}</script>
-
-
-<meta name="layout" content="L5">
-<style>
-
-:root{
-  --primary:#0a2540;
-  --accent:#3b82f6;
-  --bg:#fafbfc;
-  --surface:#fff;
-  --text:#1a1a1a;
-  --border:#e8edf2;
-  --muted:#64748b;
-  --font-body:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-  --font-h:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);line-height:1.65;color:var(--text);background:var(--bg)}
-a{color:var(--primary);text-decoration:none}
-a:hover{text-decoration:underline}
-/* Prose links — links dentro del contenido principal SIEMPRE visibles (underline + accent) */
-main section.block p a, main section.block li a, .cierre a {
-    color: var(--accent);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-    font-weight: 500;
-}
-main section.block p a:hover, main section.block li a:hover, .cierre a:hover {
-    text-decoration-thickness: 2px;
-    color: var(--primary);
-}
-.container{max-width:1400px;margin:0 auto;padding:0 24px}
-header{background:var(--primary);color:#fff;padding:18px 0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-header .container{display:flex;align-items:center;justify-content:space-between;gap:20px}
-header .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
-header .brand-link:hover{text-decoration:none}
-header .logo{flex-shrink:0;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3))}
-header .brand-line{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;line-height:1.1}
-header .brand-name{font-family:var(--font-h);font-size:1.18rem;font-weight:700;letter-spacing:.02em;color:#fff}
-header .brand-sep{color:#64748b;font-weight:300}
-header .brand-sub{font-size:.78rem;font-weight:400;color:#cbd5e1;letter-spacing:.02em}
-@media(max-width:560px){header .brand-sep,header .brand-sub{display:none}}
-header .navbar{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
-header .nav-link{color:#e2e8f0;padding:8px 14px;border-radius:6px;font-size:.92rem;font-weight:500;transition:background .15s,color .15s;text-decoration:none;background:transparent;border:none;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:4px}
-header .nav-link:hover,header .nav-link[aria-expanded="true"]{background:rgba(255,255,255,.1);color:#fff;text-decoration:none}
-header .nav-dd{position:relative}
-header .dd-arrow{font-size:.7rem;opacity:.8;transition:transform .15s}
-header .nav-link[aria-expanded="true"] .dd-arrow{transform:rotate(180deg)}
-header .dd-menu{position:absolute;top:calc(100% + 6px);left:0;background:#fff;min-width:240px;border-radius:8px;box-shadow:0 8px 28px rgba(0,0,0,.18);padding:6px 0;display:none;z-index:1000;border:1px solid rgba(0,0,0,.06)}
-header .nav-dd.open .dd-menu{display:block}
-header .dd-menu a{display:block;padding:10px 18px;color:#1f2937;font-size:.92rem;text-decoration:none;transition:background .12s}
-header .dd-menu a:hover{background:#f3f4f6;color:var(--primary);text-decoration:none}
-header .dd-menu a{display:flex!important;align-items:center;justify-content:space-between;gap:14px}
-header .hub-badge{display:inline-block;background:color-mix(in srgb, var(--accent) 18%, #fff 82%);color:var(--primary);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:11px;line-height:1.4}
-header .nav-burger{display:none;background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 12px;border-radius:6px;font-size:1.1rem;cursor:pointer}
-@media(max-width:780px){
-  header .container{flex-wrap:wrap}
-  header .nav-burger{display:inline-block}
-  header .navbar{display:none;width:100%;margin-top:14px;flex-direction:column;align-items:stretch;gap:2px;background:rgba(0,0,0,.15);padding:10px;border-radius:8px}
-  body.nav-open header .navbar{display:flex}
-  header .nav-dd{width:100%}
-  header .dd-menu{position:static;box-shadow:none;background:rgba(255,255,255,.04);border:none;padding:0;margin-top:4px}
-  header .dd-menu a{color:#e2e8f0;padding:8px 18px}
-  header .dd-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
-}
-.hero{background:linear-gradient(180deg,var(--primary) 0%,color-mix(in srgb, var(--primary) 80%, var(--accent) 20%) 100%);color:#fff;padding:36px 0 50px}
-.hero h1{font-family:var(--font-h);font-size:2.1rem;line-height:1.25;font-weight:700;margin-bottom:12px;max-width:1280px}
-.hero p.subtitle{font-size:1.05rem;color:#cbd5e1;max-width:1100px;margin-bottom:18px}
-.breadcrumb{padding:0 0 14px;font-size:.85rem;color:#cbd5e1;background:transparent;border:none}
-.breadcrumb a{color:#93c5fd;text-decoration:none}
-.breadcrumb a:hover{color:#fff;text-decoration:underline}
-.breadcrumb span{color:#fff;font-weight:500}
-.block{background:var(--surface);border-radius:10px;padding:26px 30px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.04);border:1px solid var(--border);overflow:hidden}
-.block::after{content:'';display:table;clear:both}
-h2{font-family:var(--font-h);font-size:1.45rem;color:var(--primary);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border);font-weight:700}
-h3{font-family:var(--font-h);font-size:1.1rem;color:var(--primary);margin:14px 0 8px;font-weight:600}
-p{margin-bottom:12px;color:var(--text)}
-.hero-img-wrap{margin:18px 0;text-align:center}
-.hero-img-wrap img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.08);display:inline-block}
-.inline-img{float:right;width:38%;max-width:320px;margin:6px 0 18px 22px}
-.inline-img img{display:block;width:100%!important;height:auto!important;max-width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
-@media(max-width:680px){.inline-img{float:none;width:100%;max-width:100%;margin:18px auto}}
-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem;border-radius:6px;overflow:hidden}
-table th{background:var(--primary);color:#fff;padding:12px 14px;text-align:left;font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.04em}
-table td{padding:10px 14px;border-bottom:1px solid var(--border)}
-table tr:nth-child(even) td{background:color-mix(in srgb, var(--bg) 50%, #f8fafc 50%)}
-.norm-list{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-.norm-list li{background:color-mix(in srgb, var(--accent) 8%, #fff 92%);color:var(--primary);padding:8px 14px;border-radius:6px;border-left:3px solid var(--primary);font-family:ui-monospace,monospace;font-size:.92rem}
-.faq details{background:color-mix(in srgb, var(--bg) 60%, #f8fafc 40%);padding:14px 18px;margin-bottom:8px;border-radius:8px;border-left:3px solid var(--primary)}
-.faq summary{font-weight:600;cursor:pointer;color:var(--primary);font-size:1.02rem;list-style:none}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';float:right;font-size:1.4rem;line-height:1;color:var(--muted)}
-.faq details[open] summary::after{content:'−'}
-.faq details[open] p{margin-top:12px;color:var(--text)}
-#mapa-ciudad{height:340px;border-radius:8px;border:1px solid var(--border);z-index:1}
-.sidebar h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px;font-weight:600}
-.sidebar ul{list-style:none}
-.sidebar li{margin-bottom:6px}
-.sidebar a{color:var(--primary);font-size:.93rem;display:block;padding:8px 10px;border-radius:5px;transition:background .12s}
-.sidebar a:hover{background:color-mix(in srgb, var(--accent) 10%, #fff 90%);text-decoration:none}
-.cierre{background:color-mix(in srgb, var(--accent) 8%, #fff 92%);padding:20px 26px;border-radius:8px;border-left:4px solid var(--primary);margin-top:24px;color:var(--text);font-style:italic}
-.author-byline{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--primary);padding:14px 18px;border-radius:8px;display:flex;align-items:center;gap:14px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.author-byline img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border)}
-.author-byline .author-info{flex:1;min-width:0}
-.author-byline .author-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.author-byline .author-name{font-size:1rem;font-weight:700;color:var(--primary);display:block;text-decoration:none;line-height:1.3}
-.author-byline .author-title{font-size:.82rem;color:var(--muted);margin-top:2px}
-.author-byline .author-date{font-size:.72rem;color:var(--muted);text-align:right;line-height:1.5;flex-shrink:0}
-@media(max-width:560px){.author-byline{flex-wrap:wrap}.author-byline .author-date{text-align:left;width:100%;margin-top:8px;border-top:1px solid var(--border);padding-top:8px}}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
-.service-card{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:var(--bg);border-radius:8px;border:1px solid var(--border);text-decoration:none;color:var(--primary);transition:transform .15s,box-shadow .15s,border-color .15s}
-.service-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08);border-color:var(--accent);text-decoration:none}
-.service-card .card-title{font-weight:600;font-size:1.02rem}
-.service-card .card-arrow{font-size:1.3rem;color:var(--accent)}
-.sat-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.sat-chip{display:inline-flex;align-items:center;padding:7px 14px;background:color-mix(in srgb, var(--accent) 7%, #fff 93%);border:1px solid var(--border);border-radius:18px;color:var(--primary);font-size:.9rem;text-decoration:none;transition:background .12s,border-color .12s,transform .12s}
-.sat-chip:hover{background:color-mix(in srgb, var(--accent) 14%, #fff 86%);border-color:var(--accent);text-decoration:none;transform:translateY(-1px)}
-.sat-to-hub{display:flex;align-items:center;justify-content:space-between;gap:14px;background:color-mix(in srgb, var(--primary) 6%, #fff 94%);border-left:4px solid var(--primary);padding:14px 22px;border-radius:6px;margin:0 0 22px;font-size:.95rem;flex-wrap:wrap}
-.sat-to-hub-label{color:var(--text)}
-.sat-to-hub-link{color:var(--primary);font-weight:600;text-decoration:none;white-space:nowrap}
-.sat-to-hub-link:hover{text-decoration:underline}
-.cta-block,section.block.cta-block{background:linear-gradient(135deg, var(--primary) 0%, color-mix(in srgb, var(--primary) 70%, var(--accent) 30%) 100%)!important;color:#fff!important;border:none!important;padding:36px 40px!important;text-align:center!important;border-radius:12px!important;box-shadow:0 4px 18px rgba(0,0,0,.12)!important;margin:24px 0!important;border-top:none!important}
-.cta-block h2,section.block.cta-block h2{color:#fff!important;border-bottom:none!important;padding-bottom:0!important;font-size:1.55rem!important;margin-bottom:10px!important;text-shadow:0 1px 2px rgba(0,0,0,.15)!important}
-.cta-block h2::after,section.block.cta-block h2::after{display:none!important;content:none!important}
-.cta-block p,section.block.cta-block p{color:#e2e8f0!important;margin-bottom:18px!important;font-size:1rem!important;max-width:none!important}
-.cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-.cta-wa,.cta-email{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:transform .12s,box-shadow .12s}
-.cta-wa{background:#25d366;color:#fff}
-.cta-wa:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,211,102,.4);text-decoration:none}
-.cta-email{background:#fff;color:var(--primary)}
-.cta-email:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(255,255,255,.2);text-decoration:none}
-.cta-email-note{font-size:.85rem;color:#cbd5e1;margin-top:8px;margin-bottom:0}
-.cta-email-note a{color:#93c5fd}
-.cta-email-note a:hover{color:#fff}
-/* Cities chips (S4) — internal linking bottom-of-page */
-.city-chips-section{margin:30px auto 24px;max-width:1200px}
-.city-chips-section > h2{font-family:var(--font-h);font-size:1.35rem;color:var(--primary);margin-bottom:18px;padding-bottom:8px;border-bottom:2px solid var(--border);font-weight:700}
-.city-chips-zone{margin-bottom:18px}
-.city-chips-zone:last-child{margin-bottom:0}
-.city-chips-zone-title{font-family:var(--font-h);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-weight:700;border:none;padding:0}
-.city-chips-row{display:flex;flex-wrap:wrap;gap:8px}
-.city-chip{display:inline-flex;align-items:center;padding:7px 14px;background:color-mix(in srgb, var(--accent) 6%, #fff 94%);border:1px solid var(--border);border-radius:18px;color:var(--primary);font-size:.9rem;text-decoration:none;transition:background .12s,border-color .12s,transform .12s,box-shadow .12s;font-weight:500;line-height:1.2;white-space:nowrap}
-.city-chip:hover{background:color-mix(in srgb, var(--accent) 14%, #fff 86%);border-color:var(--accent);color:var(--primary);text-decoration:none;transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.06)}
-@media(max-width:560px){.city-chip{font-size:.85rem;padding:6px 12px}}
-footer{background:var(--primary);color:#cbd5e1;padding:36px 0;margin-top:50px}
-footer .container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;align-items:start}
-footer h4{color:#fff;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
-footer p,footer a{color:#cbd5e1;font-size:.88rem;line-height:1.7}
-footer a:hover{color:#fff}
-footer .copyr{grid-column:1/-1;border-top:1px solid color-mix(in srgb, var(--primary) 60%, #fff 40%);padding-top:18px;text-align:center;color:#94a3b8;font-size:.82rem}
-footer .footer-designer-credit{color:#94a3b8;font-size:.78rem;margin-top:8px;font-style:italic}
-
-
-.mag-layout{padding:42px 24px;max-width:1320px;margin:0 auto}
-.mag-layout main{min-width:0}
-.mag-layout h1{font-size:2.8rem!important;line-height:1.15;letter-spacing:-.02em;font-weight:800}
-.mag-layout .block{padding:30px 40px;background:transparent;border:none;border-top:1px solid var(--border);border-radius:0;box-shadow:none;margin-bottom:0}
-.mag-layout .block:first-child{border-top:none}
-.mag-layout h2{font-size:1.6rem;border-bottom:none;padding-bottom:0}
-.mag-layout p:first-of-type{font-size:1.08rem;line-height:1.7;color:var(--text)}
-/* drop-cap REMOVIDO 2026-05-27 (user feedback) — afectaba a todos los párrafos de cards/bloques */
-
-</style>
-
-
-
-
-
-<style id="hero-img-cap-v3">
-section.block{overflow:auto}
-section.block .hero-img-wrap{float:right!important;max-width:340px!important;width:340px!important;max-height:280px!important;margin:6px 0 16px 24px!important;overflow:hidden;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.10);display:block!important}
-section.block .hero-img-wrap img{max-width:100%!important;max-height:280px!important;width:100%!important;height:280px!important;object-fit:cover!important;display:block!important;border-radius:10px}
-.inline-img{float:right!important;max-width:300px!important;width:300px!important;max-height:220px!important;margin:6px 0 18px 20px!important;overflow:hidden;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.10)}
-.inline-img img{max-width:100%!important;max-height:220px!important;width:100%!important;height:220px!important;object-fit:cover!important;display:block!important;border-radius:10px}
-section.block h2{clear:both;margin-top:0}
-@media (max-width:768px){
-  section.block{overflow:visible}
-  section.block .hero-img-wrap{float:none!important;width:100%!important;max-width:100%!important;max-height:240px!important;margin:18px auto!important}
-  section.block .hero-img-wrap img{height:240px!important;max-height:240px!important}
-  .inline-img{float:none!important;width:100%!important;max-width:100%!important;max-height:220px!important;margin:18px auto!important}
-}
-main img:not([class]){max-width:100%;height:auto}
-</style>
-<!-- logo-unique-v1 -->
-
-
-
-<style id="cta-center-fix">
-.cta-block,section.block.cta-block{margin:32px auto!important;max-width:760px!important;text-align:center!important}
-.cta-block .cta-inner{margin:0 auto;max-width:600px;text-align:center}
-.cta-block h2{text-align:center!important}
-.cta-block p{text-align:center!important}
-.cta-buttons{display:flex!important;justify-content:center!important;align-items:center!important;flex-wrap:wrap!important}
-.cta-block .cta-email{display:inline-block;padding:14px 28px;background:#fff;color:var(--primary)!important;border-radius:9999px;font-weight:700;text-decoration:none;font-size:1.05rem}
-.cta-block .cta-email:hover{background:var(--accent);color:#fff!important;transform:translateY(-1px)}
-@media(max-width:900px){.cta-block,section.block.cta-block{max-width:100%!important}}
-</style>
-<link rel="preload" as="image" href="../img/mecanica-suelos-1.webp" fetchpriority="high">
-<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style><!--selfhost-fonts--><style></style></head>
-<body>
-<header>
-<div class="container">
-<a class="brand-link" href="/">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40"><rect width="64" height="64" rx="10" fill="#0c4a6e"/><path d="M8 18 Q20 14 32 18 T56 18 L56 24 Q44 28 32 24 T8 24 Z" fill="#fbbf24" opacity="0.95"/><path d="M8 30 Q20 26 32 30 T56 30 L56 36 Q44 40 32 36 T8 36 Z" fill="#f59e0b" opacity="0.85"/><path d="M8 42 Q20 38 32 42 T56 42 L56 50 Q44 54 32 50 T8 50 Z" fill="#92400e" opacity="0.75"/></svg>
-<div class="brand-line">
-  <span class="brand-name">MS Chile</span>
-  <span class="brand-sep">·</span>
-  <span class="brand-sub">Ingeniería Geotécnica</span>
-</div>
-</a>
-<nav class="navbar" aria-label="principal">
-<a href="/" class="nav-link">Inicio</a>
-<div class="nav-dd"><button class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Servicios<span class="dd-arrow">▾</span></button><div class="dd-menu" role="menu"><a href="/sondajes-spt/" role="menuitem">Sondajes SPT</a><a href="/laboratorio-mecanica-suelos/" role="menuitem">Laboratorio de Mecanica de Suelos</a></div></div>
-<div class="nav-dd"><button class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Cobertura<span class="dd-arrow">▾</span></button><div class="dd-menu" role="menu"><a href="/mecanica-de-suelos-en-santiago/" role="menuitem" class="hub-main"><strong>Santiago</strong></a><a href="/mecanica-de-suelos-en-antofagasta/" role="menuitem" class="hub-main"><strong>Antofagasta</strong></a><a href="/mecanica-de-suelos-en-concepcion/" role="menuitem" class="hub-main"><strong>Concepción</strong></a><a href="/mecanica-de-suelos-en-valparaiso/" role="menuitem" class="hub-main"><strong>Valparaíso</strong></a><a href="/mecanica-de-suelos-en-iquique/" role="menuitem" class="hub-main"><strong>Iquique</strong></a></div></div>
-
-
-<a href="/equipo/cristobal-mansilla-ortega/" class="nav-link">Equipo</a>
-</nav>
-<button class="nav-burger" aria-label="menú" onclick="document.body.classList.toggle('nav-open')">☰</button>
-</div>
-</header>
-
-<section class="hero">
-<div class="container">
-<nav class="breadcrumb"><a href="/">Inicio</a> › <a href="/mecanica-de-suelos-en-chillan/">Chillan</a></nav>
-<h1>Mecanica de Suelos en Chillan</h1>
-<p class="subtitle">Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable. Nuestra firma ofrece servicios técnicos en la región.</p>
-</div>
-</section>
-
-<div class="container">
-<div class="mag-layout">
-<main>
-
-
-
-
-<!-- hero-inside-section-v1 -->
-<section class="block">
-
-
-<div class="hero-img-wrap"><img src="../img/mecanica-suelos-1.webp?v2.1779915894" alt="Mecanica de Suelos en Chillan - servicio sede zona Sur" width="500" height="281" loading="eager" fetchpriority="high" decoding="async"></div>
-
-En un conjunto habitacional de cuatro pisos en el sector oriente de Chillan, el diseño de fundaciones requirió un estudio detallado del subsuelo debido a la presencia de gravas arenosas con lentes de arcilla. Nuestra firma, especializada en mecanica de suelos, aborda estos desafíos con un enfoque técnico y normativo, considerando la sismicidad local y las condiciones hidrogeológicas del valle del Ñuble. La experiencia acumulada en la Región de Ñuble permite a nuestro equipo anticipar comportamientos del terreno en proyectos de edificación, infraestructura vial y obras civiles, siempre bajo el marco de las normas chilenas.
-</section>
-
-
-<section class="block">
-<h2>Metodología</h2>
-<div class="inline-img"><img src="../img/mecanica-suelos-2.webp?v2.1779915894" alt="Chillan Chile - equipo tecnico MS Chile" loading="lazy" width="500" height="400"></div>
-<p>Nuestra metodología en Chillan integra prospecciones geotécnicas como <a href="/sondajes-spt/">sondajes spt</a> y calicatas, complementadas con ensayos de laboratorio in situ y en planta. La campaña se diseña según la tipología del proyecto y las condiciones locales, priorizando la obtención de parámetros representativos del subsuelo. El análisis incluye la evaluación de la capacidad de soporte, asentamientos y estabilidad, considerando la interacción suelo-estructura. Los resultados se presentan en informes técnicos que cumplen con la normativa vigente, facilitando la toma de decisiones en el diseño de fundaciones y obras de contención.</p>
-</section>
-
-
-<section class="block">
-<h2>Parámetros Técnicos Referenciales</h2>
-<table>
-<thead><tr><th>Parámetro</th><th>Valor Referencial</th></tr></thead>
-<tbody><tr><td>Tipo de suelo predominante</td><td>Grava arenosa con bolones, lentes de arcilla limosa</td></tr><tr><td>Aceleración sísmica máxima (NCh433)</td><td>0,40 g (Zona 3)</td></tr><tr><td>Nivel freático típico</td><td>Entre -6 y -12 m, variable según sector</td></tr><tr><td>Profundidad de roca basal</td><td>Variable; >15 m en sectores aluviales</td></tr><tr><td>Ángulo de fricción interno (gravas)</td><td>35° a 40° (estimado por correlaciones SPT)</td></tr></tbody>
-</table>
-</section>
-
-<section class="block">
-<h2>Consideraciones Locales — Chillan</h2>
-<p>En Chillan, el suelo predominante corresponde a depósitos aluviales del río Ñuble, con gravas arenosas en el centro y arcillas limosas en sectores periféricos como el oriente. El nivel freático se sitúa entre 6 y 12 metros de profundidad, siendo más somero en invierno y en zonas cercanas al río. Según la norma NCh433.Of2012, la ciudad se ubica en Zona Sísmica 3, con aceleración efectiva máxima de 0,40 g, lo que exige un análisis detallado de licuación en suelos finos saturados. La topografía es relativamente plana, pero existen contrastes entre el casco histórico (gravas compactas) y la expansión hacia el poniente (arcillas blandas). Un error frecuente en la zona es subestimar la heterogeneidad lateral de los depósitos, lo que ha generado asentamientos diferenciales en conjuntos habitacionales. Para proyectos de mayor envergadura, recomendamos complementar con  en cortes o rellenos.</p>
-</section>
-
-
-<section class="block services-grid-section">
-<h2>Servicios en Chillan</h2>
-<div class="services-grid">
-<a class="service-card" href="/sondajes-spt/">
-  <div class="card-title">Sondajes SPT</div>
-  <div class="card-arrow">&rarr;</div>
-</a>
-<a class="service-card" href="/laboratorio-mecanica-suelos/">
-  <div class="card-title">Laboratorio de Mecanica de Suelos</div>
-  <div class="card-arrow">&rarr;</div>
-</a>
-<a class="service-card" href="/estabilidad-taludes/">
-  <div class="card-title">Estabilidad de Taludes</div>
-  <div class="card-arrow">&rarr;</div>
-</a>
-<a class="service-card" href="/diseno-muros-contencion/">
-  <div class="card-title">Diseno de Muros de Contencion</div>
-  <div class="card-arrow">&rarr;</div>
-</a></div>
-</section>
-
-
-
-
-<section class="block faq">
-<h2>Preguntas Frecuentes</h2>
-<details><summary>¿Qué tipo de suelo predomina en Chillan?</summary><p>El subsuelo de Chillan está compuesto principalmente por gravas arenosas con bolones, producto de depósitos aluviales del río Ñuble. En algunos sectores se encuentran lentes de arcilla limosa, especialmente hacia el poniente, lo que condiciona el diseño de fundaciones.</p></details><details><summary>¿Cuál es la normativa sísmica aplicable en Chillan?</summary><p>En Chillan rige la norma NCh433.Of2012, que clasifica la ciudad en Zona Sísmica 3 con una aceleración efectiva máxima de 0,40 g. Esta zonificación exige estudios geotécnicos detallados para evaluar el riesgo de licuación y diseñar fundaciones sismorresistentes.</p></details><details><summary>¿Es obligatorio un estudio de mecánica de suelos para construir en Chillan?</summary><p>Sí, la Ordenanza General de Urbanismo y Construcciones (OGUC) exige un estudio de mecánica de suelos para toda edificación de más de tres pisos o con cargas elevadas. Incluso en viviendas unifamiliares, se recomienda para evitar problemas de asentamiento.</p></details>
-</section>
-
-
-<section class="block normativa">
-<h2>Normativa Aplicable</h2>
-<ul class="norm-list"><li><strong>NCh433.Of2012 – Diseño sísmico de edificios</strong></li><li><strong>NCh1508.Of2014 – Geotecnia: sondajes y ensayos de penetración</strong></li><li><strong>NCh3171.Of2010 – Estudio de suelos para fundaciones</strong></li></ul>
-</section>
-
-
-<section class="block cta-block">
-<div class="cta-inner">
-<h2>Solicite una Cotización</h2>
-<p>Nuestro equipo evalúa su proyecto y emite informe inicial sin compromiso.</p>
-<div class="cta-buttons">
-  <a class="cta-email" href="/cdn-cgi/l/email-protection#64070b0a100507100b24090107050a0d07050001171101080b174a0b16035b1711060e01071059370b080d070d1011004156540001415654070b100d1e05070da7d70a415654412156415c54415d50415654270c0d0808050a">Solicitar cotización</a>
-</div>
-<p class="cta-email-note">O escríbanos directamente a <a href="/cdn-cgi/l/email-protection#d2b1bdbca6b3b1a6bd92bfb7b1b3bcbbb1b3b6b7a1a7b7bebda1fcbda0b5"><strong><span class="__cf_email__" data-cfemail="51323e3f253032253e113c3432303f38323035342224343d3e227f3e2336">[email&#160;protected]</span></strong></a></p>
-</div>
-</section>
-
-
-<section class="block map">
-<h2>Cobertura — Chillan</h2>
-<div id="mapa-ciudad" style="width:100%;height:340px"></div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/leaflet-ef3a.js" defer></script>
-<script>document.addEventListener('DOMContentLoaded',function(){/*lf-defer-fix*/(function(){
-  var el=document.getElementById('mapa-ciudad');
-  var map=L.map(el,{scrollWheelZoom:false}).setView([-36.6066,-72.1034],12);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',
-    {attribution:'&copy; OpenStreetMap &copy; CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
-  L.circle([-36.6066,-72.1034],{radius:5000,color:'#0a2540',fillColor:'#3b82f6',fillOpacity:0.18,weight:2})
-    .addTo(map).bindPopup('Área de cobertura — Chillan');
-  // Fix grid/flex: invalidar tamaño tras render del layout (tiles del lado faltante)
-  function _fixSize(){ map.invalidateSize(true); }
-  setTimeout(_fixSize,80); setTimeout(_fixSize,300); setTimeout(_fixSize,800);
-  window.addEventListener('load',_fixSize);
-  window.addEventListener('resize',_fixSize);
-  if(window.ResizeObserver){ new ResizeObserver(_fixSize).observe(el); }
-})();
-});</script>
-</section>
-
-<div class="cierre">Nuestra firma ofrece servicios de mecanica de suelos en Chillan, integrando el conocimiento local con la experiencia de nuestro equipo en <a href="/mecanica-de-suelos-en-concepcion/">mecanica de suelos en Concepción</a>, para entregar soluciones geotécnicas confiables en la región.</div>
-
-<details class="sat-to-hub-details" style="margin:1.5rem 0 .5rem;padding:0;font-size:.85rem">
-<summary style="cursor:pointer;color:#6b7280;padding:.5rem 0;list-style:none;display:inline-flex;align-items:center;gap:.4rem">
-<span style="font-size:.75rem;color:#9ca3af">▾</span>
-<span>Cobertura regional</span>
-</summary>
-<div style="padding:.6rem 0 0 1.2rem;color:#6b7280;font-size:.85rem">
-Servicio prestado desde nuestra base regional en <a href="/mecanica-de-suelos-en-concepcion/" style="color:var(--accent,#3b82f6);font-weight:600;text-decoration:none">Concepción →</a>
-</div>
-</details>
-
-
-
-</main>
-
-
-</div>
-</div>
-
-
-
-<footer>
-<div class="container">
-<div>
-<h4>Mecanica de Suelos</h4>
-<p>Servicios geotécnicos profesionales (Chile).</p>
-<p class="footer-designer-credit">Sitio diseñado por equipo geotécnico</p>
-</div>
-<div>
-<h4>Contacto</h4>
-<p>Email: <a href="/cdn-cgi/l/email-protection#8eede1e0faefedfae1cee3ebedefe0e7edefeaebfdfbebe2e1fda0e1fce9"><span class="__cf_email__" data-cfemail="93f0fcfde7f2f0e7fcd3fef6f0f2fdfaf0f2f7f6e0e6f6fffce0bdfce1f4">[email&#160;protected]</span></a></p>
-</div>
-<div>
-<h4>Servicios</h4>
-<p><a href="/sondajes-spt/">Sondajes SPT</a><br><a href="/laboratorio-mecanica-suelos/">Laboratorio de Mecanica de Suelos</a><br><br></p>
-</div>
-<div>
-<h4>Legal</h4>
-<p><a href="/sitemap.xml">Mapa del sitio</a></p>
-</div>
-<div class="copyr">&copy; 2026 Mecanica de Suelos. Todos los derechos reservados.</div>
-</div>
-</footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Dropdowns del navbar: click toggle + cierra al click fuera
-(function(){
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest('.nav-toggle');
-    var dds = document.querySelectorAll('.nav-dd');
-    if(btn){
-      var parent = btn.parentElement;
-      var wasOpen = parent.classList.contains('open');
-      dds.forEach(function(d){ d.classList.remove('open'); d.querySelector('.nav-toggle').setAttribute('aria-expanded','false'); });
-      if(!wasOpen){ parent.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
-      e.preventDefault();
-    } else if(!e.target.closest('.dd-menu')){
-      dds.forEach(function(d){ d.classList.remove('open'); var t=d.querySelector('.nav-toggle'); if(t) t.setAttribute('aria-expanded','false'); });
-    }
-  });
-})();
-</script>
-</body>
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Mecanica de Suelos en Chillan · Estudios Geotécnicos Chile</title>
+
+<meta name="description" content="Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable.">
+
+<meta name="theme-color" content="#0a2540">
+
+<link rel="canonical" href="https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/">
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Mecanica de Suelos en Chillan · Estudios Geotécnicos Chile">
+
+<meta property="og:description" content="Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable.">
+
+<meta property="og:url" content="https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/">
+
+<meta property="og:site_name" content="Mecánica de Suelos Chile">
+
+<meta property="og:image" content="https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/img/team_cl_ingeo_lab_equipos.png">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Mecanica de Suelos en Chillan · Estudios Geotécnicos Chile">
+
+<meta name="twitter:description" content="Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable. Nuestra firma ofrece servicios técnicos en la región.">
+
+<meta name="twitter:image" content="https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/img/team_cl_ingeo_lab_equipos.png">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230A2540'/%3E%3Cpath d='M14 44 L24 30 L34 38 L44 22 L50 28' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="/css/leaflet-ef3a.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/leaflet-ef3a.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/leaflet-ef3a.css"></noscript></noscript>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Mecanica de Suelos Chillan", "description": "Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable. Nuestra firma ofrece servicios técnicos en la región.", "url": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/", "areaServed": {"@type": "City", "name": "Chillan"}, "address": {"@type": "PostalAddress", "addressLocality": "Chillan", "addressCountry": "Chile"}, "email": "contacto@mecanicadesuelos.org", "priceRange": "$$", "geo": {"@type": "GeoCoordinates", "latitude": -36.6066, "longitude": -72.1034}}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mecanica de Suelos en Chillan", "url": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/", "description": "Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable. Nuestra firma ofrece servicios técnicos en la región.", "inLanguage": "es", "datePublished": "2026-05-27", "dateModified": "2026-05-27", "isPartOf": {"@type": "WebSite", "url": "https://mecanicadesuelos.org/", "name": "Mecanica de Suelos"}, "breadcrumb": {"@id": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/#breadcrumb"}}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mecanicadesuelos.org/"}, {"@type": "ListItem", "position": 2, "name": "Chillan", "item": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/"}], "@id": "https://mecanicadesuelos.org/mecanica-de-suelos-en-chillan/#breadcrumb"}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué tipo de suelo predomina en Chillan?", "acceptedAnswer": {"@type": "Answer", "text": "El subsuelo de Chillan está compuesto principalmente por gravas arenosas con bolones, producto de depósitos aluviales del río Ñuble. En algunos sectores se encuentran lentes de arcilla limosa, especialmente hacia el poniente, lo que condiciona el diseño de fundaciones."}}, {"@type": "Question", "name": "¿Cuál es la normativa sísmica aplicable en Chillan?", "acceptedAnswer": {"@type": "Answer", "text": "En Chillan rige la norma NCh433.Of2012, que clasifica la ciudad en Zona Sísmica 3 con una aceleración efectiva máxima de 0,40 g. Esta zonificación exige estudios geotécnicos detallados para evaluar el riesgo de licuación y diseñar fundaciones sismorresistentes."}}, {"@type": "Question", "name": "¿Es obligatorio un estudio de mecánica de suelos para construir en Chillan?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, la Ordenanza General de Urbanismo y Construcciones (OGUC) exige un estudio de mecánica de suelos para toda edificación de más de tres pisos o con cargas elevadas. Incluso en viviendas unifamiliares, se recomienda para evitar problemas de asentamiento."}}]}</script>
+
+<meta name="layout" content="L5">
+
+<style>
+
+:root{
+
+  --primary:#0a2540;
+
+  --accent:#3b82f6;
+
+  --bg:#fafbfc;
+
+  --surface:#fff;
+
+  --text:#1a1a1a;
+
+  --border:#e8edf2;
+
+  --muted:#64748b;
+
+  --font-body:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+
+  --font-h:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{font-family:var(--font-body);line-height:1.65;color:var(--text);background:var(--bg)}
+
+a{color:var(--primary);text-decoration:none}
+
+a:hover{text-decoration:underline}
+
+/* Prose links — links dentro del contenido principal SIEMPRE visibles (underline + accent) */
+
+main section.block p a, main section.block li a, .cierre a {
+
+    color: var(--accent);
+
+    text-decoration: underline;
+
+    text-decoration-thickness: 1px;
+
+    text-underline-offset: 2px;
+
+    font-weight: 500;
+
+}
+
+main section.block p a:hover, main section.block li a:hover, .cierre a:hover {
+
+    text-decoration-thickness: 2px;
+
+    color: var(--primary);
+
+}
+
+.container{max-width:1400px;margin:0 auto;padding:0 24px}
+
+header{background:var(--primary);color:#fff;padding:18px 0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+
+header .container{display:flex;align-items:center;justify-content:space-between;gap:20px}
+
+header .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+
+header .brand-link:hover{text-decoration:none}
+
+header .logo{flex-shrink:0;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3))}
+
+header .brand-line{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;line-height:1.1}
+
+header .brand-name{font-family:var(--font-h);font-size:1.18rem;font-weight:700;letter-spacing:.02em;color:#fff}
+
+header .brand-sep{color:#64748b;font-weight:300}
+
+header .brand-sub{font-size:.78rem;font-weight:400;color:#cbd5e1;letter-spacing:.02em}
+
+@media(max-width:560px){header .brand-sep,header .brand-sub{display:none}}
+
+header .navbar{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+
+header .nav-link{color:#e2e8f0;padding:8px 14px;border-radius:6px;font-size:.92rem;font-weight:500;transition:background .15s,color .15s;text-decoration:none;background:transparent;border:none;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:4px}
+
+header .nav-link:hover,header .nav-link[aria-expanded="true"]{background:rgba(255,255,255,.1);color:#fff;text-decoration:none}
+
+header .nav-dd{position:relative}
+
+header .dd-arrow{font-size:.7rem;opacity:.8;transition:transform .15s}
+
+header .nav-link[aria-expanded="true"] .dd-arrow{transform:rotate(180deg)}
+
+header .dd-menu{position:absolute;top:calc(100% + 6px);left:0;background:#fff;min-width:240px;border-radius:8px;box-shadow:0 8px 28px rgba(0,0,0,.18);padding:6px 0;display:none;z-index:1000;border:1px solid rgba(0,0,0,.06)}
+
+header .nav-dd.open .dd-menu{display:block}
+
+header .dd-menu a{display:block;padding:10px 18px;color:#1f2937;font-size:.92rem;text-decoration:none;transition:background .12s}
+
+header .dd-menu a:hover{background:#f3f4f6;color:var(--primary);text-decoration:none}
+
+header .dd-menu a{display:flex!important;align-items:center;justify-content:space-between;gap:14px}
+
+header .hub-badge{display:inline-block;background:color-mix(in srgb, var(--accent) 18%, #fff 82%);color:var(--primary);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:11px;line-height:1.4}
+
+header .nav-burger{display:none;background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 12px;border-radius:6px;font-size:1.1rem;cursor:pointer}
+
+@media(max-width:780px){
+
+  header .container{flex-wrap:wrap}
+
+  header .nav-burger{display:inline-block}
+
+  header .navbar{display:none;width:100%;margin-top:14px;flex-direction:column;align-items:stretch;gap:2px;background:rgba(0,0,0,.15);padding:10px;border-radius:8px}
+
+  body.nav-open header .navbar{display:flex}
+
+  header .nav-dd{width:100%}
+
+  header .dd-menu{position:static;box-shadow:none;background:rgba(255,255,255,.04);border:none;padding:0;margin-top:4px}
+
+  header .dd-menu a{color:#e2e8f0;padding:8px 18px}
+
+  header .dd-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+
+}
+
+.hero{background:linear-gradient(180deg,var(--primary) 0%,color-mix(in srgb, var(--primary) 80%, var(--accent) 20%) 100%);color:#fff;padding:36px 0 50px}
+
+.hero h1{font-family:var(--font-h);font-size:2.1rem;line-height:1.25;font-weight:700;margin-bottom:12px;max-width:1280px}
+
+.hero p.subtitle{font-size:1.05rem;color:#cbd5e1;max-width:1100px;margin-bottom:18px}
+
+.breadcrumb{padding:0 0 14px;font-size:.85rem;color:#cbd5e1;background:transparent;border:none}
+
+.breadcrumb a{color:#93c5fd;text-decoration:none}
+
+.breadcrumb a:hover{color:#fff;text-decoration:underline}
+
+.breadcrumb span{color:#fff;font-weight:500}
+
+.block{background:var(--surface);border-radius:10px;padding:26px 30px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.04);border:1px solid var(--border);overflow:hidden}
+
+.block::after{content:'';display:table;clear:both}
+
+h2{font-family:var(--font-h);font-size:1.45rem;color:var(--primary);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border);font-weight:700}
+
+h3{font-family:var(--font-h);font-size:1.1rem;color:var(--primary);margin:14px 0 8px;font-weight:600}
+
+p{margin-bottom:12px;color:var(--text)}
+
+.hero-img-wrap{margin:18px 0;text-align:center}
+
+.hero-img-wrap img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.08);display:inline-block}
+
+.inline-img{float:right;width:38%;max-width:320px;margin:6px 0 18px 22px}
+
+.inline-img img{display:block;width:100%!important;height:auto!important;max-width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+
+@media(max-width:680px){.inline-img{float:none;width:100%;max-width:100%;margin:18px auto}}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem;border-radius:6px;overflow:hidden}
+
+table th{background:var(--primary);color:#fff;padding:12px 14px;text-align:left;font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.04em}
+
+table td{padding:10px 14px;border-bottom:1px solid var(--border)}
+
+table tr:nth-child(even) td{background:color-mix(in srgb, var(--bg) 50%, #f8fafc 50%)}
+
+.norm-list{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+
+.norm-list li{background:color-mix(in srgb, var(--accent) 8%, #fff 92%);color:var(--primary);padding:8px 14px;border-radius:6px;border-left:3px solid var(--primary);font-family:ui-monospace,monospace;font-size:.92rem}
+
+.faq details{background:color-mix(in srgb, var(--bg) 60%, #f8fafc 40%);padding:14px 18px;margin-bottom:8px;border-radius:8px;border-left:3px solid var(--primary)}
+
+.faq summary{font-weight:600;cursor:pointer;color:var(--primary);font-size:1.02rem;list-style:none}
+
+.faq summary::-webkit-details-marker{display:none}
+
+.faq summary::after{content:'+';float:right;font-size:1.4rem;line-height:1;color:var(--muted)}
+
+.faq details[open] summary::after{content:'−'}
+
+.faq details[open] p{margin-top:12px;color:var(--text)}
+
+#mapa-ciudad{height:340px;border-radius:8px;border:1px solid var(--border);z-index:1}
+
+.sidebar h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px;font-weight:600}
+
+.sidebar ul{list-style:none}
+
+.sidebar li{margin-bottom:6px}
+
+.sidebar a{color:var(--primary);font-size:.93rem;display:block;padding:8px 10px;border-radius:5px;transition:background .12s}
+
+.sidebar a:hover{background:color-mix(in srgb, var(--accent) 10%, #fff 90%);text-decoration:none}
+
+.cierre{background:color-mix(in srgb, var(--accent) 8%, #fff 92%);padding:20px 26px;border-radius:8px;border-left:4px solid var(--primary);margin-top:24px;color:var(--text);font-style:italic}
+
+.author-byline{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--primary);padding:14px 18px;border-radius:8px;display:flex;align-items:center;gap:14px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+
+.author-byline img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border)}
+
+.author-byline .author-info{flex:1;min-width:0}
+
+.author-byline .author-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+.author-byline .author-name{font-size:1rem;font-weight:700;color:var(--primary);display:block;text-decoration:none;line-height:1.3}
+
+.author-byline .author-title{font-size:.82rem;color:var(--muted);margin-top:2px}
+
+.author-byline .author-date{font-size:.72rem;color:var(--muted);text-align:right;line-height:1.5;flex-shrink:0}
+
+@media(max-width:560px){.author-byline{flex-wrap:wrap}.author-byline .author-date{text-align:left;width:100%;margin-top:8px;border-top:1px solid var(--border);padding-top:8px}}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+
+.service-card{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:var(--bg);border-radius:8px;border:1px solid var(--border);text-decoration:none;color:var(--primary);transition:transform .15s,box-shadow .15s,border-color .15s}
+
+.service-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08);border-color:var(--accent);text-decoration:none}
+
+.service-card .card-title{font-weight:600;font-size:1.02rem}
+
+.service-card .card-arrow{font-size:1.3rem;color:var(--accent)}
+
+.sat-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+.sat-chip{display:inline-flex;align-items:center;padding:7px 14px;background:color-mix(in srgb, var(--accent) 7%, #fff 93%);border:1px solid var(--border);border-radius:18px;color:var(--primary);font-size:.9rem;text-decoration:none;transition:background .12s,border-color .12s,transform .12s}
+
+.sat-chip:hover{background:color-mix(in srgb, var(--accent) 14%, #fff 86%);border-color:var(--accent);text-decoration:none;transform:translateY(-1px)}
+
+.sat-to-hub{display:flex;align-items:center;justify-content:space-between;gap:14px;background:color-mix(in srgb, var(--primary) 6%, #fff 94%);border-left:4px solid var(--primary);padding:14px 22px;border-radius:6px;margin:0 0 22px;font-size:.95rem;flex-wrap:wrap}
+
+.sat-to-hub-label{color:var(--text)}
+
+.sat-to-hub-link{color:var(--primary);font-weight:600;text-decoration:none;white-space:nowrap}
+
+.sat-to-hub-link:hover{text-decoration:underline}
+
+.cta-block,section.block.cta-block{background:linear-gradient(135deg, var(--primary) 0%, color-mix(in srgb, var(--primary) 70%, var(--accent) 30%) 100%)!important;color:#fff!important;border:none!important;padding:36px 40px!important;text-align:center!important;border-radius:12px!important;box-shadow:0 4px 18px rgba(0,0,0,.12)!important;margin:24px 0!important;border-top:none!important}
+
+.cta-block h2,section.block.cta-block h2{color:#fff!important;border-bottom:none!important;padding-bottom:0!important;font-size:1.55rem!important;margin-bottom:10px!important;text-shadow:0 1px 2px rgba(0,0,0,.15)!important}
+
+.cta-block h2::after,section.block.cta-block h2::after{display:none!important;content:none!important}
+
+.cta-block p,section.block.cta-block p{color:#e2e8f0!important;margin-bottom:18px!important;font-size:1rem!important;max-width:none!important}
+
+.cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+
+.cta-wa,.cta-email{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:transform .12s,box-shadow .12s}
+
+.cta-wa{background:#25d366;color:#fff}
+
+.cta-wa:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,211,102,.4);text-decoration:none}
+
+.cta-email{background:#fff;color:var(--primary)}
+
+.cta-email:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(255,255,255,.2);text-decoration:none}
+
+.cta-email-note{font-size:.85rem;color:#cbd5e1;margin-top:8px;margin-bottom:0}
+
+.cta-email-note a{color:#93c5fd}
+
+.cta-email-note a:hover{color:#fff}
+
+/* Cities chips (S4) — internal linking bottom-of-page */
+
+.city-chips-section{margin:30px auto 24px;max-width:1200px}
+
+.city-chips-section > h2{font-family:var(--font-h);font-size:1.35rem;color:var(--primary);margin-bottom:18px;padding-bottom:8px;border-bottom:2px solid var(--border);font-weight:700}
+
+.city-chips-zone{margin-bottom:18px}
+
+.city-chips-zone:last-child{margin-bottom:0}
+
+.city-chips-zone-title{font-family:var(--font-h);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-weight:700;border:none;padding:0}
+
+.city-chips-row{display:flex;flex-wrap:wrap;gap:8px}
+
+.city-chip{display:inline-flex;align-items:center;padding:7px 14px;background:color-mix(in srgb, var(--accent) 6%, #fff 94%);border:1px solid var(--border);border-radius:18px;color:var(--primary);font-size:.9rem;text-decoration:none;transition:background .12s,border-color .12s,transform .12s,box-shadow .12s;font-weight:500;line-height:1.2;white-space:nowrap}
+
+.city-chip:hover{background:color-mix(in srgb, var(--accent) 14%, #fff 86%);border-color:var(--accent);color:var(--primary);text-decoration:none;transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.06)}
+
+@media(max-width:560px){.city-chip{font-size:.85rem;padding:6px 12px}}
+
+footer{background:var(--primary);color:#cbd5e1;padding:36px 0;margin-top:50px}
+
+footer .container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;align-items:start}
+
+footer h4{color:#fff;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+
+footer p,footer a{color:#cbd5e1;font-size:.88rem;line-height:1.7}
+
+footer a:hover{color:#fff}
+
+footer .copyr{grid-column:1/-1;border-top:1px solid color-mix(in srgb, var(--primary) 60%, #fff 40%);padding-top:18px;text-align:center;color:#94a3b8;font-size:.82rem}
+
+footer .footer-designer-credit{color:#94a3b8;font-size:.78rem;margin-top:8px;font-style:italic}
+
+.mag-layout{padding:42px 24px;max-width:1320px;margin:0 auto}
+
+.mag-layout main{min-width:0}
+
+.mag-layout h1{font-size:2.8rem!important;line-height:1.15;letter-spacing:-.02em;font-weight:800}
+
+.mag-layout .block{padding:30px 40px;background:transparent;border:none;border-top:1px solid var(--border);border-radius:0;box-shadow:none;margin-bottom:0}
+
+.mag-layout .block:first-child{border-top:none}
+
+.mag-layout h2{font-size:1.6rem;border-bottom:none;padding-bottom:0}
+
+.mag-layout p:first-of-type{font-size:1.08rem;line-height:1.7;color:var(--text)}
+
+/* drop-cap REMOVIDO 2026-05-27 (user feedback) — afectaba a todos los párrafos de cards/bloques */
+
+</style>
+
+<style id="hero-img-cap-v3">
+
+section.block{overflow:auto}
+
+section.block .hero-img-wrap{float:right!important;max-width:340px!important;width:340px!important;max-height:280px!important;margin:6px 0 16px 24px!important;overflow:hidden;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.10);display:block!important}
+
+section.block .hero-img-wrap img{max-width:100%!important;max-height:280px!important;width:100%!important;height:280px!important;object-fit:cover!important;display:block!important;border-radius:10px}
+
+.inline-img{float:right!important;max-width:300px!important;width:300px!important;max-height:220px!important;margin:6px 0 18px 20px!important;overflow:hidden;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.10)}
+
+.inline-img img{max-width:100%!important;max-height:220px!important;width:100%!important;height:220px!important;object-fit:cover!important;display:block!important;border-radius:10px}
+
+section.block h2{clear:both;margin-top:0}
+
+@media (max-width:768px){
+
+  section.block{overflow:visible}
+
+  section.block .hero-img-wrap{float:none!important;width:100%!important;max-width:100%!important;max-height:240px!important;margin:18px auto!important}
+
+  section.block .hero-img-wrap img{height:240px!important;max-height:240px!important}
+
+  .inline-img{float:none!important;width:100%!important;max-width:100%!important;max-height:220px!important;margin:18px auto!important}
+
+}
+
+main img:not([class]){max-width:100%;height:auto}
+
+</style>
+
+<!-- logo-unique-v1 -->
+
+<style id="cta-center-fix">
+
+.cta-block,section.block.cta-block{margin:32px auto!important;max-width:760px!important;text-align:center!important}
+
+.cta-block .cta-inner{margin:0 auto;max-width:600px;text-align:center}
+
+.cta-block h2{text-align:center!important}
+
+.cta-block p{text-align:center!important}
+
+.cta-buttons{display:flex!important;justify-content:center!important;align-items:center!important;flex-wrap:wrap!important}
+
+.cta-block .cta-email{display:inline-block;padding:14px 28px;background:#fff;color:var(--primary)!important;border-radius:9999px;font-weight:700;text-decoration:none;font-size:1.05rem}
+
+.cta-block .cta-email:hover{background:var(--accent);color:#fff!important;transform:translateY(-1px)}
+
+@media(max-width:900px){.cta-block,section.block.cta-block{max-width:100%!important}}
+
+</style>
+
+<link rel="preload" as="image" href="../img/mecanica-suelos-1.webp" fetchpriority="high">
+
+<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style><!--selfhost-fonts--><style></style></head>
+
+<body>
+
+<header>
+
+<div class="container">
+
+<a class="brand-link" href="/">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40"><rect width="64" height="64" rx="10" fill="#0c4a6e"/><path d="M8 18 Q20 14 32 18 T56 18 L56 24 Q44 28 32 24 T8 24 Z" fill="#fbbf24" opacity="0.95"/><path d="M8 30 Q20 26 32 30 T56 30 L56 36 Q44 40 32 36 T8 36 Z" fill="#f59e0b" opacity="0.85"/><path d="M8 42 Q20 38 32 42 T56 42 L56 50 Q44 54 32 50 T8 50 Z" fill="#92400e" opacity="0.75"/></svg>
+
+<div class="brand-line">
+
+  <span class="brand-name">MS Chile</span>
+
+  <span class="brand-sep">·</span>
+
+  <span class="brand-sub">Ingeniería Geotécnica</span>
+
+</div>
+
+</a>
+
+<nav class="navbar" aria-label="principal">
+
+<a href="/" class="nav-link">Inicio</a>
+
+<div class="nav-dd"><button class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Servicios<span class="dd-arrow">▾</span></button><div class="dd-menu" role="menu"><a href="/sondajes-spt/" role="menuitem">Sondajes SPT</a><a href="/laboratorio-mecanica-suelos/" role="menuitem">Laboratorio de Mecanica de Suelos</a></div></div>
+
+<div class="nav-dd"><button class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Cobertura<span class="dd-arrow">▾</span></button><div class="dd-menu" role="menu"><a href="/mecanica-de-suelos-en-santiago/" role="menuitem" class="hub-main"><strong>Santiago</strong></a><a href="/mecanica-de-suelos-en-antofagasta/" role="menuitem" class="hub-main"><strong>Antofagasta</strong></a><a href="/mecanica-de-suelos-en-concepcion/" role="menuitem" class="hub-main"><strong>Concepción</strong></a><a href="/mecanica-de-suelos-en-valparaiso/" role="menuitem" class="hub-main"><strong>Valparaíso</strong></a><a href="/mecanica-de-suelos-en-iquique/" role="menuitem" class="hub-main"><strong>Iquique</strong></a></div></div>
+
+<a href="/equipo/cristobal-mansilla-ortega/" class="nav-link">Equipo</a>
+
+</nav>
+
+<button class="nav-burger" aria-label="menú" onclick="document.body.classList.toggle('nav-open')">☰</button>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<nav class="breadcrumb"><a href="/">Inicio</a> › <a href="/mecanica-de-suelos-en-chillan/">Chillan</a></nav>
+
+<h1>Mecanica de Suelos en Chillan</h1>
+
+<p class="subtitle">Mecanica de suelos en Chillan: estudios geotécnicos, normativa sísmica NCh433, suelos granulares y nivel freático variable. Nuestra firma ofrece servicios técnicos en la región.</p>
+
+</div>
+
+</section>
+
+<div class="container">
+
+<div class="mag-layout">
+
+<main>
+
+<!-- hero-inside-section-v1 -->
+
+<section class="block">
+
+<div class="hero-img-wrap"></div>
+
+En un conjunto habitacional de cuatro pisos en el sector oriente de Chillan, el diseño de fundaciones requirió un estudio detallado del subsuelo debido a la presencia de gravas arenosas con lentes de arcilla. Nuestra firma, especializada en mecanica de suelos, aborda estos desafíos con un enfoque técnico y normativo, considerando la sismicidad local y las condiciones hidrogeológicas del valle del Ñuble. La experiencia acumulada en la Región de Ñuble permite a nuestro equipo anticipar comportamientos del terreno en proyectos de edificación, infraestructura vial y obras civiles, siempre bajo el marco de las normas chilenas.
+
+</section>
+
+<section class="block">
+
+<h2>Metodología</h2>
+
+<div class="inline-img"></div>
+
+<p>Nuestra metodología en Chillan integra prospecciones geotécnicas como <a href="/sondajes-spt/">sondajes spt</a> y calicatas, complementadas con ensayos de laboratorio in situ y en planta. La campaña se diseña según la tipología del proyecto y las condiciones locales, priorizando la obtención de parámetros representativos del subsuelo. El análisis incluye la evaluación de la capacidad de soporte, asentamientos y estabilidad, considerando la interacción suelo-estructura. Los resultados se presentan en informes técnicos que cumplen con la normativa vigente, facilitando la toma de decisiones en el diseño de fundaciones y obras de contención.</p>
+
+</section>
+
+<section class="block">
+
+<h2>Parámetros Técnicos Referenciales</h2>
+
+<table>
+
+<thead><tr><th>Parámetro</th><th>Valor Referencial</th></tr></thead>
+
+<tbody><tr><td>Tipo de suelo predominante</td><td>Grava arenosa con bolones, lentes de arcilla limosa</td></tr><tr><td>Aceleración sísmica máxima (NCh433)</td><td>0,40 g (Zona 3)</td></tr><tr><td>Nivel freático típico</td><td>Entre -6 y -12 m, variable según sector</td></tr><tr><td>Profundidad de roca basal</td><td>Variable; >15 m en sectores aluviales</td></tr><tr><td>Ángulo de fricción interno (gravas)</td><td>35° a 40° (estimado por correlaciones SPT)</td></tr></tbody>
+
+</table>
+
+</section>
+
+<section class="block">
+
+<h2>Consideraciones Locales — Chillan</h2>
+
+<p>En Chillan, el suelo predominante corresponde a depósitos aluviales del río Ñuble, con gravas arenosas en el centro y arcillas limosas en sectores periféricos como el oriente. El nivel freático se sitúa entre 6 y 12 metros de profundidad, siendo más somero en invierno y en zonas cercanas al río. Según la norma NCh433.Of2012, la ciudad se ubica en Zona Sísmica 3, con aceleración efectiva máxima de 0,40 g, lo que exige un análisis detallado de licuación en suelos finos saturados. La topografía es relativamente plana, pero existen contrastes entre el casco histórico (gravas compactas) y la expansión hacia el poniente (arcillas blandas). Un error frecuente en la zona es subestimar la heterogeneidad lateral de los depósitos, lo que ha generado asentamientos diferenciales en conjuntos habitacionales. Para proyectos de mayor envergadura, recomendamos complementar con  en cortes o rellenos.</p>
+
+</section>
+
+<section class="block services-grid-section">
+
+<h2>Servicios en Chillan</h2>
+
+<div class="services-grid">
+
+<a class="service-card" href="/sondajes-spt/">
+
+  <div class="card-title">Sondajes SPT</div>
+
+  <div class="card-arrow">&rarr;</div>
+
+</a>
+
+<a class="service-card" href="/laboratorio-mecanica-suelos/">
+
+  <div class="card-title">Laboratorio de Mecanica de Suelos</div>
+
+  <div class="card-arrow">&rarr;</div>
+
+</a>
+
+<a class="service-card" href="/estabilidad-taludes/">
+
+  <div class="card-title">Estabilidad de Taludes</div>
+
+  <div class="card-arrow">&rarr;</div>
+
+</a>
+
+<a class="service-card" href="/diseno-muros-contencion/">
+
+  <div class="card-title">Diseno de Muros de Contencion</div>
+
+  <div class="card-arrow">&rarr;</div>
+
+</a></div>
+
+</section>
+
+<section class="block faq">
+
+<h2>Preguntas Frecuentes</h2>
+
+<details><summary>¿Qué tipo de suelo predomina en Chillan?</summary><p>El subsuelo de Chillan está compuesto principalmente por gravas arenosas con bolones, producto de depósitos aluviales del río Ñuble. En algunos sectores se encuentran lentes de arcilla limosa, especialmente hacia el poniente, lo que condiciona el diseño de fundaciones.</p></details><details><summary>¿Cuál es la normativa sísmica aplicable en Chillan?</summary><p>En Chillan rige la norma NCh433.Of2012, que clasifica la ciudad en Zona Sísmica 3 con una aceleración efectiva máxima de 0,40 g. Esta zonificación exige estudios geotécnicos detallados para evaluar el riesgo de licuación y diseñar fundaciones sismorresistentes.</p></details><details><summary>¿Es obligatorio un estudio de mecánica de suelos para construir en Chillan?</summary><p>Sí, la Ordenanza General de Urbanismo y Construcciones (OGUC) exige un estudio de mecánica de suelos para toda edificación de más de tres pisos o con cargas elevadas. Incluso en viviendas unifamiliares, se recomienda para evitar problemas de asentamiento.</p></details>
+
+</section>
+
+<section class="block normativa">
+
+<h2>Normativa Aplicable</h2>
+
+<ul class="norm-list"><li><strong>NCh433.Of2012 – Diseño sísmico de edificios</strong></li><li><strong>NCh1508.Of2014 – Geotecnia: sondajes y ensayos de penetración</strong></li><li><strong>NCh3171.Of2010 – Estudio de suelos para fundaciones</strong></li></ul>
+
+</section>
+
+<section class="block cta-block">
+
+<div class="cta-inner">
+
+<h2>Solicite una Cotización</h2>
+
+<p>Nuestro equipo evalúa su proyecto y emite informe inicial sin compromiso.</p>
+
+<div class="cta-buttons">
+
+  <a class="cta-email" href="/cdn-cgi/l/email-protection#64070b0a100507100b24090107050a0d07050001171101080b174a0b16035b1711060e01071059370b080d070d1011004156540001415654070b100d1e05070da7d70a415654412156415c54415d50415654270c0d0808050a">Solicitar cotización</a>
+
+</div>
+
+<p class="cta-email-note">O escríbanos directamente a <a href="/cdn-cgi/l/email-protection#d2b1bdbca6b3b1a6bd92bfb7b1b3bcbbb1b3b6b7a1a7b7bebda1fcbda0b5"><strong><span class="__cf_email__" data-cfemail="51323e3f253032253e113c3432303f38323035342224343d3e227f3e2336">[email&#160;protected]</span></strong></a></p>
+
+</div>
+
+</section>
+
+<section class="block map">
+
+<h2>Cobertura — Chillan</h2>
+
+<div id="mapa-ciudad" style="width:100%;height:340px"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/leaflet-ef3a.js" defer></script>
+
+<script>document.addEventListener('DOMContentLoaded',function(){/*lf-defer-fix*/(function(){
+
+  var el=document.getElementById('mapa-ciudad');
+
+  var map=L.map(el,{scrollWheelZoom:false}).setView([-36.6066,-72.1034],12);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',
+
+    {attribution:'&copy; OpenStreetMap &copy; CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
+
+  L.circle([-36.6066,-72.1034],{radius:5000,color:'#0a2540',fillColor:'#3b82f6',fillOpacity:0.18,weight:2})
+
+    .addTo(map).bindPopup('Área de cobertura — Chillan');
+
+  // Fix grid/flex: invalidar tamaño tras render del layout (tiles del lado faltante)
+
+  function _fixSize(){ map.invalidateSize(true); }
+
+  setTimeout(_fixSize,80); setTimeout(_fixSize,300); setTimeout(_fixSize,800);
+
+  window.addEventListener('load',_fixSize);
+
+  window.addEventListener('resize',_fixSize);
+
+  if(window.ResizeObserver){ new ResizeObserver(_fixSize).observe(el); }
+
+})();
+
+});</script>
+
+</section>
+
+<div class="cierre">Nuestra firma ofrece servicios de mecanica de suelos en Chillan, integrando el conocimiento local con la experiencia de nuestro equipo en <a href="/mecanica-de-suelos-en-concepcion/">mecanica de suelos en Concepción</a>, para entregar soluciones geotécnicas confiables en la región.</div>
+
+<details class="sat-to-hub-details" style="margin:1.5rem 0 .5rem;padding:0;font-size:.85rem">
+
+<summary style="cursor:pointer;color:#6b7280;padding:.5rem 0;list-style:none;display:inline-flex;align-items:center;gap:.4rem">
+
+<span style="font-size:.75rem;color:#9ca3af">▾</span>
+
+<span>Cobertura regional</span>
+
+</summary>
+
+<div style="padding:.6rem 0 0 1.2rem;color:#6b7280;font-size:.85rem">
+
+Servicio prestado desde nuestra base regional en <a href="/mecanica-de-suelos-en-concepcion/" style="color:var(--accent,#3b82f6);font-weight:600;text-decoration:none">Concepción →</a>
+
+</div>
+
+</details>
+
+</main>
+
+</div>
+
+</div>
+
+<footer>
+
+<div class="container">
+
+<div>
+
+<h4>Mecanica de Suelos</h4>
+
+<p>Servicios geotécnicos profesionales (Chile).</p>
+
+<p class="footer-designer-credit">Sitio diseñado por equipo geotécnico</p>
+
+</div>
+
+<div>
+
+<h4>Contacto</h4>
+
+<p>Email: <a href="/cdn-cgi/l/email-protection#8eede1e0faefedfae1cee3ebedefe0e7edefeaebfdfbebe2e1fda0e1fce9"><span class="__cf_email__" data-cfemail="93f0fcfde7f2f0e7fcd3fef6f0f2fdfaf0f2f7f6e0e6f6fffce0bdfce1f4">[email&#160;protected]</span></a></p>
+
+</div>
+
+<div>
+
+<h4>Servicios</h4>
+
+<p><a href="/sondajes-spt/">Sondajes SPT</a><br><a href="/laboratorio-mecanica-suelos/">Laboratorio de Mecanica de Suelos</a><br><br></p>
+
+</div>
+
+<div>
+
+<h4>Legal</h4>
+
+<p><a href="/sitemap.xml">Mapa del sitio</a></p>
+
+</div>
+
+<div class="copyr">&copy; 2026 Mecanica de Suelos. Todos los derechos reservados.</div>
+
+</div>
+
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+// Dropdowns del navbar: click toggle + cierra al click fuera
+
+(function(){
+
+  document.addEventListener('click', function(e){
+
+    var btn = e.target.closest('.nav-toggle');
+
+    var dds = document.querySelectorAll('.nav-dd');
+
+    if(btn){
+
+      var parent = btn.parentElement;
+
+      var wasOpen = parent.classList.contains('open');
+
+      dds.forEach(function(d){ d.classList.remove('open'); d.querySelector('.nav-toggle').setAttribute('aria-expanded','false'); });
+
+      if(!wasOpen){ parent.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+
+      e.preventDefault();
+
+    } else if(!e.target.closest('.dd-menu')){
+
+      dds.forEach(function(d){ d.classList.remove('open'); var t=d.querySelector('.nav-toggle'); if(t) t.setAttribute('aria-expanded','false'); });
+
+    }
+
+  });
+
+})();
+
+</script>
+
+</body>
+
 </html>
